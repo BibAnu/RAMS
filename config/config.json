@@ -1,0 +1,16 @@
+{
+  "versions": {
+    "v1": {
+      "name": "v1",
+      "prefix": "/api/v1"
+    }
+  },
+  "db": {
+    "database": "manpower backup",
+    "user": "root",
+    "password": "bibek",
+    "host": "127.0.0.1",
+    "dialect": "mysql",
+    "timezone": "+05:45"
+  }
+}

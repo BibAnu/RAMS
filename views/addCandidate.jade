@@ -1,0 +1,52 @@
+form.form-horizontal(ng-submit='addCandidate()')
+    .form-group
+        label.col-sm-4.control-label
+            h3 Add Candidate
+        .col-sm-8
+    .form-group
+        label.col-sm-2.control-label First Name
+        .col-sm-10
+            input.form-control(type='text', placeholder='First Name', ng-model='newCandidate.fname' required)
+    .form-group
+        label.col-sm-2.control-label Middle Name
+        .col-sm-10
+            input.form-control(type='text', placeholder='Middle Name', ng-model='newCandidate.mname')
+    .form-group
+        label.col-sm-2.control-label Last Name
+        .col-sm-10
+            input.form-control(type='text', placeholder='Last Name', ng-model='newCandidate.lname' required)
+    .form-group
+        label.col-sm-2.control-label Passport No
+        .col-sm-10
+            input.form-control(type='number', placeholder='Passport No', ng-model='newCandidate.passportno' required)
+    .form-group
+        label.col-sm-2.control-label City
+        .col-sm-10
+            input.form-control(type='text', placeholder='City', ng-model='newCandidate.city')
+    .form-group
+        label.col-sm-2.control-label District
+        .col-sm-10
+            input.form-control(type='text', placeholder='District', ng-model='newCandidate.district' required)
+    .form-group
+        label.col-sm-2.control-label Contact No.
+        .col-sm-10
+            input.form-control(type='number', placeholder='Contact', ng-model='newCandidate.contact')
+    .form-group
+        label.col-sm-2.control-label Post
+        .col-sm-10
+            input.form-control(type='text', placeholder='Post', ng-model='newCandidate.post' required)
+    .form-group
+        label.col-sm-2.control-label Visa No.
+        .col-sm-10
+            select.form-control(ng-model='newCandidate.visano')
+                option(ng-repeat="v in visa" value="{{v.visano}}") {{v.visano}}
+    .form-group
+        label.col-sm-2.control-label Status
+        .col-sm-10
+            select.form-control(ng-model='newCandidate.status')
+                option(ng-repeat="item in items" value="{{item}}") {{item}}
+    .form-group
+        .col-sm-offset-2.col-sm-10
+            button.btn.btn-success(type='submit') Submit
+            button.btn.btn-danger(ui-sref="dashboard.candidates") Cancel
+

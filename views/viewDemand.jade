@@ -1,0 +1,22 @@
+button(class='btn btn-success glyphicon glyphicon-plus pull-right center', ui-sref='dashboard.addDemand')
+table.center.table.table-hover(style='width:auto')
+    tr
+        th ID
+        th VISA NO
+        th COMPANY
+        th(colspan="2") ACTION
+    tr(ng-repeat='demand in demands')
+        td {{ demand.id }}
+        td(ng-hide='editRow[demand.id]') {{ demand.visano }}
+        td(ng-show='editRow[demand.id]')
+            input.form-control(type='number', placeholder="Visa No.", ng-model='demand.visano')
+        td(ng-hide='editRow[demand.id]') {{ demand.name }}
+        td(ng-show='editRow[demand.id]')
+            select.form-control(ng-model='demand.name')
+                option(value='{{demand.name}}', ng-selected, disabled) {{ demand.name }} 
+                option(ng-repeat="item in items" value="{{item.name}}") {{item.name}}
+        td 
+            button.btn.btn-info(ng-hide='editRow[demand.id]', ng-click='editDemand(demand)') Edit
+            button.btn.btn-info(ng-show='editRow[demand.id]', ng-click='saveDemand(demand.id, demand)') Save
+        td 
+            button.btn.btn-danger(ng-click='deleteDemand(demand.id)') Delete

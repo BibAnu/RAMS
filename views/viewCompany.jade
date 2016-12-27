@@ -1,0 +1,29 @@
+button(class='btn btn-success glyphicon glyphicon-plus pull-right center', ui-sref='dashboard.addCompany')
+table.center.table.table-hover(style='width:auto')
+    tr
+        th ID
+        th NAME
+        th USERNAME
+        th EMAIL
+        th ADDRESS
+        th(colspan="2") ACTION
+    tr(ng-repeat='company in companies')
+        td {{ company.id }}
+        td(ng-hide='editRow[company.id]') {{ company.name }}
+        td(ng-show='editRow[company.id]')
+            input.form-control(type='text', placeholder="Company Name", ng-model='company.name')
+        td(ng-hide='editRow[company.id]') {{ company.username }}
+        td(ng-show='editRow[company.id]')
+            input.form-control(type='text', placeholder="Username", ng-model='company.username')
+        td(ng-hide='editRow[company.id]') {{ company.email }}
+        td(ng-show='editRow[company.id]')
+            input.form-control(type='email', placeholder="Email", ng-model='company.email')
+        td(ng-hide='editRow[company.id]') {{ company.city }} {{ company.country }}
+        td(ng-show='editRow[company.id]')
+            input.form-control(type='text', placeholder="City", ng-model='company.city')
+            input.form-control(type='text', placeholder="Country", ng-model='company.country')
+        td 
+            button.btn.btn-info(ng-hide='editRow[company.id]', ng-click='editCompany(company)') Edit
+            button.btn.btn-info(ng-show='editRow[company.id]', ng-click='saveCompany(company.id, company)') Save
+        td 
+            button.btn.btn-danger(ng-click='deleteCompany(company.id)') Delete

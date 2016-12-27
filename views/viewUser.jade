@@ -1,0 +1,49 @@
+button.btn.btn-success.glyphicon.glyphicon-plus.pull-right.center(ui-sref='dashboard.addUser')
+form
+  .form-group
+    .input-group.col-sm-2
+      .input-group-addon.glyphicon.glyphicon-search
+      input.form-control(type='text', placeholder='Search', ng-model='searchUser')
+table.center.table.table-hover(style='width:100%')
+  tr
+    th(ng-click="sortType = 'id'; sortReverse = !sortReverse") ID
+    th(ng-click="sortType = 'name'; sortReverse = !sortReverse") NAME
+    th(ng-click="sortType = 'username'; sortReverse = !sortReverse") USERNAME
+    th(ng-click="sortType = 'password'; sortReverse = !sortReverse") PASSWORD
+    th(ng-click="sortType = 'email'; sortReverse = !sortReverse") EMAIL
+    th(ng-click="sortType = 'address'; sortReverse = !sortReverse") ADDRESS
+    th(ng-click="sortType = 'phone'; sortReverse = !sortReverse") PHONE NO
+    th(ng-click="sortType = 'usertype'; sortReverse = !sortReverse") USER TYPE
+    th(colspan='2') ACTION
+  tr(ng-repeat='user in users | orderBy:sortType:sortReverse | filter:searchUser')
+    td {{ user.user_id }}
+    td(ng-hide='editRow[user.user_id]') {{ user.fname }} {{ user.lname }}
+    td(ng-show='editRow[user.user_id]')
+      input.form-control(type='text', placeholder="First Name", ng-model='user.fname')
+      input.form-control(type='text', placeholder="Last Name", ng-model='user.lname')
+    td(ng-hide='editRow[user.user_id]') {{ user.username }}
+    td(ng-show='editRow[user.user_id]')
+      input.form-control(type='text', placeholder="Username", ng-model='user.username')
+    td(ng-hide='editRow[user.user_id]') {{ user.password }}
+    td(ng-show='editRow[user.user_id]')
+      input.form-control(type='text', placeholder="Password", ng-model='user.password')
+    td(ng-hide='editRow[user.user_id]') {{ user.email }}
+    td(ng-show='editRow[user.user_id]')
+      input.form-control(type='email', placeholder="Email", ng-model='user.email')
+    td(ng-hide='editRow[user.user_id]') {{ user.address }}
+    td(ng-show='editRow[user.user_id]')
+      input.form-control(type='text', placeholder="Address", ng-model='user.address')
+    td(ng-hide='editRow[user.user_id]') {{ user.phoneno }}
+    td(ng-show='editRow[user.user_id]')
+      input.form-control(type='number', placeholder="Phone No", ng-model='user.phoneno')
+    td(ng-hide='editRow[user.user_id]') {{ user.usertype }}
+    td(ng-show='editRow[user.user_id]')
+      select.form-control(ng-model='user.usertype')
+        option(value='{{user.usertype}}', ng-selected, disabled) {{ user.usertype }} 
+        option(value='Admin') Admin
+        option(value='Client') Client
+    td
+      button.btn.btn-info(ng-hide='editRow[user.user_id]', ng-click='editUser(user)') Edit
+      button.btn.btn-info(ng-show='editRow[user.user_id]', ng-click='saveUser(user.user_id, user)') Save
+    td
+      button.btn.btn-danger(ng-click='deleteUser(user.user_id)') Delete

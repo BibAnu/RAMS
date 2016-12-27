@@ -1,0 +1,42 @@
+form.form-horizontal(ng-submit='addUser()')
+    .form-group
+        label.col-sm-4.control-label
+            h3 Add User
+        .col-sm-8
+    .form-group
+        label.col-sm-2.control-label First Name
+        .col-sm-10
+            input.form-control(type='text', placeholder='First Name', ng-model='newUser.fname' required)
+    .form-group
+        label.col-sm-2.control-label Last Name
+        .col-sm-10
+            input.form-control(type='text', placeholder='Last Name', ng-model='newUser.lname' required)
+    .form-group
+        label.col-sm-2.control-label Username
+        .col-sm-10
+            input.form-control(type='text', placeholder='Username', ng-model='newUser.username' required)
+    .form-group
+        label.col-sm-2.control-label Password
+        .col-sm-10
+            input.form-control(type='password', placeholder='Password', ng-model='newUser.password' required)
+    .form-group
+        label.col-sm-2.control-label Email
+        .col-sm-10
+            input.form-control(type='text', placeholder='Email', ng-model='newUser.email' required)
+    .form-group
+        label.col-sm-2.control-label Address
+        .col-sm-10
+            input.form-control(type='text', placeholder='Address', ng-model='newUser.address')
+    .form-group
+        label.col-sm-2.control-label Phone No
+        .col-sm-10
+            input.form-control(type='text', placeholder='Phone No', ng-model='newUser.phoneno' required)
+    .form-group
+        label.col-sm-2.control-label Usertype
+        .col-sm-10
+            select.form-control(ng-model='newUser.usertype')
+                option(ng-repeat="item in items" value="{{item}}") {{item}}
+    .form-group
+        .col-sm-offset-2.col-sm-10
+            button.btn.btn-success(type='submit') Submit
+            button.btn.btn-danger(ui-sref="dashboard.users") Cancel

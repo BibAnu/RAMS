@@ -1,0 +1,33 @@
+button.btn.btn-warning.pull-right(ui-sref='login') Logout
+form(ng-submit='fetchCandidates()')
+  .form-group
+    .input-group.col-sm-3
+      .input-group-addon Enter Visa Number
+      input.form-control(type='text', placeholder='Visa No', ng-model='getVisaNo')
+      button.btn(type="submit") Submit
+h2 Please enter the visa number to get status of the candidates
+// ui-sref
+form
+  .form-group
+    .input-group.col-sm-2
+      .input-group-addon.glyphicon.glyphicon-search
+      input.form-control(type='text', placeholder='Search', ng-model='searchCandidate')
+table.center.table.table-hover(style='width:75%')
+    tr
+        th ID
+        th NAME
+        th PASSPORT NO
+        th ADDRESS
+        th CONTACT NO
+        th POST
+        th VISA NO
+        th STATUS
+    tr(ng-repeat='candidate in candidates | filter:searchCandidate')
+        td {{ candidate.id }}
+        td {{ candidate.fname }} {{candidate.mname}} {{candidate.lname }}
+        td {{ candidate.passportno }}
+        td {{ candidate.city }} {{ candidate.district}}
+        td {{ candidate.contact }}
+        td {{ candidate.post }}
+        td {{ candidate.visano }}
+        td {{ candidate.status }}

@@ -1,0 +1,29 @@
+form.form-horizontal(ng-submit='addCompany()')
+    .form-group
+        label.col-sm-4.control-label
+            h3 Add Company
+        .col-sm-8
+    .form-group
+        label.col-sm-2.control-label First Name
+        .col-sm-10
+            input.form-control(type='text', placeholder='Name', ng-model='newCompany.name' required)
+    .form-group
+        label.col-sm-2.control-label Username
+        .col-sm-10
+            input.form-control(type='text', placeholder='Username', ng-model='newCompany.username' required)
+    .form-group
+        label.col-sm-2.control-label Email
+        .col-sm-10
+            input.form-control(type='email', placeholder='Email', ng-model='newCompany.email' required)
+    .form-group
+        label.col-sm-2.control-label City
+        .col-sm-10
+            input.form-control(type='text', placeholder='City', ng-model='newCompany.city')
+    .form-group
+        label.col-sm-2.control-label Country
+        .col-sm-10
+            input.form-control(type='text', placeholder='Country', ng-model='newCompany.country')
+    .form-group
+        .col-sm-offset-2.col-sm-10
+            button.btn.btn-success(type='submit') Submit
+            button.btn.btn-danger(ui-sref="dashboard.companies") Cancel

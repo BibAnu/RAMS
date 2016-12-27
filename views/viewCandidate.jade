@@ -1,0 +1,52 @@
+button(class='btn btn-success glyphicon glyphicon-plus pull-right center', ui-sref='dashboard.addCandidate')
+form
+  .form-group
+    .input-group.col-sm-2
+      .input-group-addon.glyphicon.glyphicon-search
+      input.form-control(type='text', placeholder='Search', ng-model='searchCandidate')
+table.center.table.table-hover(style='width:100%')
+    tr
+        th ID
+        th NAME
+        th PASSPORT NO
+        th ADDRESS
+        th CONTACT NO
+        th POST
+        th VISA NO
+        th STATUS
+        th(colspan="2") ACTION
+    tr(ng-repeat='candidate in candidates | filter:searchCandidate')
+        td {{ candidate.id }}
+        td(ng-hide='editRow[candidate.id]') {{ candidate.fname }} {{candidate.mname}} {{candidate.lname }}
+        td(ng-show='editRow[candidate.id]')
+            input.form-control(type='text', placeholder="First Name", ng-model='candidate.fname')
+            input.form-control(type='text', placeholder="Middle Name", ng-model='candidate.mname')
+            input.form-control(type='text', placeholder="Last Name", ng-model='candidate.lname')
+        td(ng-hide='editRow[candidate.id]') {{ candidate.passportno }}
+        td(ng-show='editRow[candidate.id]')
+            input.form-control(type='number', placeholder="Passport Number", ng-model='candidate.passportno')
+        td(ng-hide='editRow[candidate.id]') {{ candidate.city }} {{ candidate.district}}
+        td(ng-show='editRow[candidate.id]')
+            input.form-control(type='text', placeholder="City", ng-model='candidate.city')
+            input.form-control(type='text', placeholder="District", ng-model='candidate.district')
+        td(ng-hide='editRow[candidate.id]') {{ candidate.contact }}
+        td(ng-show='editRow[candidate.id]')
+            input.form-control(type='number', placeholder="Contact No.", ng-model='candidate.contact')
+        td(ng-hide='editRow[candidate.id]') {{ candidate.post }}
+        td(ng-show='editRow[candidate.id]')
+            input.form-control(type='text', placeholder="Post", ng-model='candidate.post')
+        td(ng-hide='editRow[candidate.id]') {{ candidate.visano }}
+        td(ng-show='editRow[candidate.id]')
+            select.form-control(ng-model='candidate.visano')
+                option(value='{{candidate.visano}}', ng-selected, disabled) {{ candidate.visano }} 
+                option(ng-repeat="v in visa" value="{{v.visano}}") {{v.visano}}
+        td(ng-hide='editRow[candidate.id]') {{ candidate.status }}
+        td(ng-show='editRow[candidate.id]')
+            select.form-control(ng-model='candidate.status')
+                option(value='{{candidate.status}}', ng-selected, disabled) {{ candidate.status }} 
+                option(ng-repeat="item in items" value="{{item}}") {{item}}
+        td 
+            button.btn.btn-info(ng-hide='editRow[candidate.id]', ng-click='editCandidate(candidate)') Edit
+            button.btn.btn-info(ng-show='editRow[candidate.id]', ng-click='saveCandidate(candidate.id, candidate)') Save
+        td 
+            button.btn.btn-danger(ng-click='deleteCandidate(candidate.id)') Delete

@@ -1,0 +1,22 @@
+doctype html
+html(lang="en" ng-app="myApp")
+  head
+    title Login
+    include header
+    link(rel='stylesheet', href='/stylesheets/custom.css')
+  body(ng-controller="LoginController")
+    .container
+      .row(style='margin-top:20px')
+        .col-xs-12.col-sm-8.col-md-6.col-sm-offset-2.col-md-offset-3
+          form(role='form' ng-submit='signIn()')
+            fieldset
+              h2 Please Sign In
+              hr.colorgraph
+              .form-group
+                input#username.form-control.input-lg(type='text', name='username', placeholder='Username', ng-model='login.uname')
+              .form-group
+                input#password.form-control.input-lg(type='password', name='password', placeholder='Password', ng-model='login.pass')
+              hr.colorgraph
+              .row
+                .col-xs-6.col-sm-6.col-md-6
+                  input.btn.btn-lg.btn-success.btn-block(type='submit', value='Sign In')
